@@ -1,0 +1,594 @@
+/* ==========================================
+   1. GENERAL STYLES & RESET
+   ========================================== */
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
+/* Global reset and baseline styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f4f8ff;
+    color: #333;
+    overflow-x: hidden;
+}
+
+section {
+    margin-bottom: 50px;
+}
+
+/* ==========================================
+   2. NAVIGATION BAR
+   ========================================== */
+/* Navigation bar layout configuration */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: white;
+    color: #0052cc;
+    height: 100px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Logo dimensions inside navbar */
+.logo img {
+    width: 200px;
+    height: 90px;
+    object-fit: contain;
+}
+
+/* Navbar navigation list */
+.navbar ul,
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.navbar ul li,
+.nav-links li {
+    margin: 0 15px;
+}
+
+.navbar ul li a,
+.nav-links a {
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.navbar ul li a:hover,
+.nav-links a:hover {
+    color: #0052cc;
+}
+
+/* Global button utility */
+.btn {
+    background-color: #0052cc;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #003c99;
+}
+
+/* ==========================================
+   3. DYNAMIC IMAGES & HOVER EFFECTS
+   ========================================== */
+/* Dynamic image wrapper layout */
+.img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* General image sizing and transition properties */
+img {
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+
+.img img {
+    width: 300px;
+}
+
+.img img:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+/* ==========================================
+   4. HERO & CONTACT INFO SECTIONS
+   ========================================== */
+/* Hero section header styling */
+.hero {
+    text-align: center;
+    background-color: #e1ebff;
+    padding: 80px 40px;
+}
+
+.hero h1 {
+    font-size: 36px;
+    color: #0052cc;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #666;
+}
+
+/* Contact info boxes wrapper container */
+.contact-info {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* Individual info box component */
+.info-box {
+    background: white;
+    color: black;
+    width: 250px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease-in-out;
+}
+
+.info-box.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.move:hover .info-box,
+.info-box:hover {
+    transform: translateY(-5px);
+}
+
+.info-box h3 {
+    margin-bottom: 10px;
+    color: #0052cc;
+}
+
+.info-box p {
+    color: #555;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.info-box i {
+    font-size: 30px;
+    color: #0052cc;
+    margin-bottom: 10px;
+}
+
+/* ==========================================
+   5. CONTACT FORM SECTION
+   ========================================== */
+/* Contact form main wrapper container */
+.contact-container {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 50px auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 82, 204, 0.15);
+    overflow: hidden;
+}
+
+.contact-image {
+    flex: 1;
+    max-width: 50%;
+}
+
+.contact-image img {
+    width: 100%;
+    height: 100%;
+    min-height: 320px;
+    object-fit: cover;
+}
+
+/* Contact form inputs and layout */
+.contact-form {
+    flex: 1;
+    padding: 40px;
+    text-align: center;
+}
+
+.contact-form h2 {
+    font-size: 26px;
+    color: #0052cc;
+}
+
+.contact-form p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.input-group i {
+    position: absolute;
+    left: 14px;
+    top: 22px;
+    color: #0052cc;
+}
+
+.input-group textarea + i,
+.input-group i:has(+ textarea) {
+    top: 18px;
+    transform: none;
+}
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    padding: 12px 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease-in-out;
+    outline: none;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+    border-color: #0052cc;
+}
+
+textarea {
+    resize: none;
+    height: 100px;
+    transition: border-color 0.3s ease-in-out;
+    outline: none;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #0052cc;
+    color: white;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #003c99;
+}
+
+/* ==========================================
+   6. FAQ & ASK QUESTION SECTIONS
+   ========================================== */
+/* Frequently asked questions section wrapper */
+.faq-section {
+    width: 80%;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.faq-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+}
+
+.faq-subtitle {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.faq-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.faq-box {
+    width: 45%;
+    background: #e8f0ff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    text-align: left;
+    transition: transform 0.25s ease;
+}
+
+.faq-box:hover {
+    transform: translateY(-4px);
+}
+
+.faq-box h3 {
+    color: #0052cc;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.faq-box p {
+    font-size: 15px;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Ask a question interactive component */
+.ask-question {
+    margin: 0 auto 50px;
+    background: #e8f0ff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+    width: 50%;
+    text-align: center;
+}
+
+.ask-question h2 {
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.ask-question p {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.ask-question textarea {
+    width: 80%;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 16px;
+    outline: none;
+    background: white;
+}
+
+.ask-question textarea:focus {
+    border-color: #0052cc;
+}
+
+button {
+    background-color: #0052cc;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #003c99;
+}
+
+.hidden {
+    display: none;
+}
+
+#responseMessage {
+    color: #28a745;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* ==========================================
+   7. FOOTER SECTION
+   ========================================== */
+/* Footer main container styling */
+.footer {
+    background-color: #002c66;
+    color: white;
+    padding: 50px 0 20px;
+    font-size: 16px;
+    margin-top: 60px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.footer-section {
+    width: 22%;
+    min-width: 250px;
+}
+
+.footer-section h2,
+.footer-section h3 {
+    color: white;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.footer-section p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #d1d8e0;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #d1d8e0;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.contact p {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #d1d8e0;
+}
+
+.contact i {
+    margin-right: 8px;
+    width: 14px;
+}
+
+/* Social media icons container */
+.social-icons {
+    margin-top: 15px;
+}
+
+.social-icons a {
+    color: white;
+    background: #0052cc;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    margin-right: 8px;
+    font-size: 15px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.social-icons a:hover {
+    background: #003c99;
+    transform: translateY(-3px);
+}
+
+/* Footer bottom copyright bar */
+.footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 15px;
+    font-size: 14px;
+    color: #a4b0be;
+}
+
+/* ==========================================
+   8. RESPONSIVE MEDIA QUERIES
+   ========================================== */
+@media (max-width: 992px) {
+    .faq-box {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+        height: auto;
+        padding: 20px;
+        gap: 12px;
+    }
+
+    .navbar ul,
+    .nav-links {
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .hero {
+        padding: 50px 20px;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .contact-container {
+        flex-direction: column;
+    }
+
+    .contact-image {
+        max-width: 100%;
+    }
+
+    .contact-image img {
+        min-height: 200px;
+    }
+
+    .contact-form {
+        padding: 25px;
+    }
+
+    .faq-section {
+        width: 90%;
+    }
+
+    .ask-question {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .ask-question textarea {
+        width: 100%;
+    }
+
+    .container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-section {
+        width: 100%;
+    }
+
+    .social-icons {
+        justify-content: center;
+        display: flex;
+    }
+}

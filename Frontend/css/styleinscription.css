@@ -1,0 +1,236 @@
+/* Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #e1ebff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #f9fcff ;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.logo {
+    width: 100px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #007bff;
+}
+
+/* Auth Buttons */
+.auth-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.sign-in-btn, .sign-up-btn {
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s;
+}
+
+.sign-in-btn {
+    background: transparent;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+.sign-in-btn:hover {
+    color: #007bff;
+    border-color: #007bff;
+}
+
+.sign-up-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.sign-up-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Auth Box */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    width: 100%;
+    padding: 20px;
+}
+
+.auth-box {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+}
+
+.icon-heart {
+    font-size: 30px;
+    color: #007bdf;
+    margin-bottom: 10px;
+}
+
+/* Input Group */
+.input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 12px 15px;
+    margin: 15px 0;
+    width: 100%;
+    transition: border-color 0.3s;
+}
+
+.input-group:focus-within {
+    border-color: #007bff;
+}
+
+.input-group input, .input-group select {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+    padding-left: 10px;
+    background: transparent;
+    color: #333;
+}
+
+.input-group i {
+    color: #888;
+    font-size: 18px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
+    color: #888;
+}
+
+/* Checkbox Group */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+    font-size: 14px;
+    text-align: left;
+}
+
+.checkbox-group input {
+    margin-right: 10px;
+}
+
+.checkbox-group a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.checkbox-group a:hover {
+    text-decoration: underline;
+}
+
+/* Buttons */
+.login-btn, .signup-btn {
+    background-color: #007bdf;
+    color: white;
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+.login-btn:hover, .signup-btn:hover {
+    background-color: #005ea6;
+}
+
+/* Error Message */
+.error-message {
+    color: #e74c3c;
+    font-size: 14px;
+    text-align: left;
+    margin: -10px 0 10px 5px;
+    display: none;
+}
+
+/* Hide signup form initially */
+.signup {
+    display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .nav-links {
+        margin: 15px 0;
+    }
+
+    .auth-box {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .auth-buttons {
+        margin-top: 15px;
+    }
+}

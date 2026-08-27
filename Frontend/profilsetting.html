@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portail Médical</title>
+
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+<div class="container">
+    <!-- Sidebar Menu -->
+    <aside class="sidebar">
+        <div class="user-info">
+            <div class="avatar"></div>
+            <p class="user-name">John Doe</p>
+            <p class="user-email">john.doe@example.com</p>
+        </div>
+        <nav class="menu">
+            <a href="#" class="menu-item active" onclick="showPage('profile', event)"><i class="fas fa-user"></i> Profile</a>
+            <a href="#" class="menu-item" onclick="showPage('settings', event)"><i class="fas fa-cog"></i> Settings</a>
+            <a href="#" class="menu-item" onclick="showPage('services', event)"><i class="fas fa-briefcase"></i> Services</a>
+
+            <p class="menu-title">Medical Services</p>
+            <a href="pageservice.html#appointments" class="menu-item"><i class="fas fa-calendar-alt"></i> Book an Appointment</a>
+            <a href="pageservice.html#myappointments" class="menu-item"><i class="fas fa-pills"></i>Check Appointment</a>
+            <a href="pageservice.html#scanimage" class="menu-item"><i class="fas fa-heartbeat"></i> Medical Image Analysis</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+        <!-- Profile -->
+        <section id="profile" class="page">
+            <h1>Edit Profile</h1>
+            <div class="profile-section">
+                <div class="avatar-container">
+                    <div class="profile-avatar">
+                        <img id="avatarImage" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuALNZNOBleAkB5DNCKXvuDDER1pLckkLDb_v4pzDsshD_f3DKY1_PUpRG3vuM1faqrxo&usqp=CAU" alt="Avatar">
+                        <label for="avatarInput" class="avatar-edit">
+                            <i class="fas fa-camera"></i>
+                        </label>
+                        <input type="file" id="avatarInput" accept="image/*">
+                    </div>
+                </div>
+
+                <div class="profile-form">
+                    <h2>Profile</h2>
+                    <p class="subtext">Edit Profile</p>
+                    <form>
+                        <label>Full Name</label>
+                        <input type="text" value="John Doe">
+
+                        <label>Email</label>
+                        <input type="email" value="john.doe@example.com">
+
+                        <label>Phone</label>
+                        <input type="text" value="+212 612 345 678">
+
+                        <label>Date of Birth</label>
+                        <input type="date" value="1990-01-01">
+
+                        <label>Gender</label>
+                        <select>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                        </select>
+
+                        <label>About Me</label>
+                        <textarea>I am a patient seeking high-quality medical care and a personalized treatment plan to improve my health</textarea>
+
+                        <button type="submit">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Settings -->
+        <section id="settings" class="page" style="display: none;">
+            <h1>Account Settings</h1>
+
+            <div class="settings-section">
+                <div class="settings-tabs">
+                    <div class="settings-tab active" onclick="showSettingsTab('security', event)">Security</div>
+                    <div class="settings-tab" onclick="showSettingsTab('notifications', event)">Notifications</div>
+                    <div class="settings-tab" onclick="showSettingsTab('privacy', event)">Privacy</div>
+                </div>
+
+                <div id="security" class="settings-content active">
+                    <h2>Account Security</h2>
+                    <p>Manage your account security settings</p>
+
+                    <div class="security-item">
+                        <div class="security-info">
+                            <h3>Password</h3>
+                            <p>Last modified 3 months ago</p>
+                        </div>
+                        <button class="btn">Change</button>
+                    </div>
+
+                    <div class="security-item">
+                        <div class="security-info">
+                            <h3>Two-Factor Authentication</h3>
+                            <p>Add an extra layer of security</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="security-item">
+                        <div class="security-info">
+                            <h3>Connected Devices</h3>
+                            <p>2 devices currently connected</p>
+                        </div>
+                        <button class="btn">Manage</button>
+                    </div>
+                </div>
+
+                <div id="notifications" class="settings-content">
+                    <h2>Notification Preferences</h2>
+                    <p>Control how you receive notifications</p>
+
+                    <div class="security-item">
+                        <div class="security-info">
+                            <h3>Email Notifications</h3>
+                            <p>Receive important notifications via email</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="security-item">
+                        <div class="security-info">
+                            <h3>Push Notifications</h3>
+                            <p>Receive notifications on your device</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="security-item">
+                        <div class="security-info">
+                            <h3>SMS Notifications</h3>
+                            <p>Receive important alerts via SMS</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div id="privacy" class="settings-content">
+                    <h2>Privacy Settings</h2>
+                    <p>Control who can see your information</p>
+
+                    <div class="security-item">
+                        <div class="security-info">
+                            <h3>Public Profile</h3>
+                            <p>Make your profile visible to other users</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="security-item">
+                        <div class="security-info">
+                            <h3>Data Sharing</h3>
+                            <p>Allow sharing of anonymous data to improve service</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="security-item">
+                        <div class="security-info">
+                            <h3>Personalization</h3>
+                            <p>Allow personalization based on your activity</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section id="services" class="page" style="display: none;">
+            <h1>Medical Services</h1>
+            <p>Access all our medical services in one place.</p>
+
+            <table class="services-table">
+                <thead>
+                <tr>
+                    <th>Service</th>
+                    <th>Status</th>
+                    <th>Description</th>
+                    <th class="service-action">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><strong>Medical Image Analysis</strong></td>
+                    <td><span class="service-status active">Active</span></td>
+                    <td>Medical Image Analysis employs advanced algorithms to extract critical data from imaging modalities, enhancing diagnostic precision. It integrates segmentation, registration, and machine learning to support clinical decisions and personalized treatment planning.</td>
+                    <td class="service-action"><button class="service-btn access">Access</button></td>
+                </tr>
+                <tr>
+                    <td><strong>Book an Appointment</strong></td>
+                    <td><span class="service-status active">Active</span></td>
+                    <td>The "Book an Appointment" service provides a simple and efficient way to schedule consultations. It allows users to easily secure a time slot with experts, ensuring a well-organized and personalized consultation experience.</td>
+                    <td class="service-action"><button class="service-btn access">Access</button></td>
+                </tr>
+                <tr>
+                    <td><strong>Check Appointment</strong></td>
+                    <td><span class="service-status active">Active</span></td>
+                    <td>The Check Appointment for Consultation service offers a streamlined way to verify your scheduled consultation details. It enables users to easily confirm the date, time, and other relevant information, ensuring a well-organized and efficient experience.</td>
+                    <td class="service-action"><button class="service-btn access">Access</button></td>
+                </tr>
+                <tr>
+                    <td><strong>Suggest Doctor</strong></td>
+                    <td><span class="service-status inactive">Inactive</span></td>
+                    <td>The "Suggest Doctor" service offers a convenient way for users to receive recommendations for doctors based on their medical needs. It matches users with suitable specialists, ensuring personalized and efficient healthcare guidance.</td>
+                    <td class="service-action"><button class="service-btn activate" disabled>Activate</button></td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</div>
+
+<script src="js/profile.js"></script>
+</body>
+</html>
