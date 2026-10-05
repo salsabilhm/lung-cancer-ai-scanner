@@ -159,7 +159,19 @@ if (uploadArea && fileInput) {
         uploadArea.style.borderColor = "#0052cc";
 
         if (event.dataTransfer.files.length) {
-            previewFile(event.dataTransfer.files[0]);
+            const droppedFile = event.dataTransfer.files[0];
+
+            // Keep the dropped file inside the input so the
+            // Analyze button can read it (fileInput.files[0]).
+            try {
+                const dataTransfer = new DataTransfer();
+                dataTransfer.items.add(droppedFile);
+                fileInput.files = dataTransfer.files;
+            } catch (err) {
+                console.warn("Could not sync dropped file with input.", err);
+            }
+
+            previewFile(droppedFile);
         }
     });
 
@@ -702,4 +714,206 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // Then load appointments belonging to the authenticated user.
     await loadAppointmentsFromAPI();
+
+    // Initialize the Scan / AI analysis section
+    initScanAnalysis();
 });
+
+
+/* =========================================================
+   13. SCAN ANALYSIS - AI PREDICTION
+========================================================= */
+
+function initScanAnalysis() {
+    const scanSection = document.getElementById("scanimage");
+
+    if (!scanSection) {
+        return;
+    }
+
+    const uploadButtons = scanSection.querySelectorAll(".upload-btn");
+    const fileInput = document.getElementById("file-input");
+    const uploadArea = document.getElementById("upload-area");
+
+    if (!fileInput || !uploadArea || uploadButtons.length < 2) {
+        console.warn("Scan elements not found in #scanimage.");
+        return;
+    }
+
+    /* "Upload Image" button (first .upload-btn) opens the file chooser.
+       This runs synchronously inside a real click, so the browser
+       user-activation requirement is satisfied. */
+    uploadButtons[0].addEventListener("click", () => {
+        fileInput.click();
+    });
+
+    /* "Result" / Analyze button (second .upload-btn) */
+    const analyzeButton = uploadButtons[1];
+
+    analyzeButton.addEventListener("click", async (event) => {
+        event.preventDefault();
+
+        const selectedFile =
+            fileInput.files && fileInput.files.length
+                ? fileInput.files[0]
+                : null;
+
+        if (!selectedFile) {
+            alert("Please upload an X-ray image first.");
+            return;
+        }
+
+        const token = getAccessToken();
+
+        if (!token) {
+            handleUnauthorized();
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append("image", selectedFile);
+
+        const originalText = analyzeButton.textContent;
+        analyzeButton.disabled = true;
+        analyzeButton.textContent = "Analyzing...";
+
+        try {
+            const response = await fetch(
+                `${API_URL}/api/scans/predict/`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Authorization": `Bearer ${token}`
+                    },
+                    body: formData
+                }
+            );
+
+            if (response.status === 401) {
+                handleUnauthorized();
+                return;
+            }
+
+            const data = await response.json().catch(() => ({}));
+
+            if (!response.ok) {
+                console.error("Scan analysis error:", response.status, data);
+
+                let message = "Unable to analyze the image.";
+
+                if (data.detail) {
+                    message = data.detail;
+                } else if (data.error) {
+                    message = data.error;
+                } else if (response.status === 400) {
+                    message = "Invalid image. Use a PNG, JPG or BMP file.";
+                } else if (response.status === 403) {
+                    message = "Scan limit reached. Free users can upload up to 3 scans.";
+                } else if (response.status >= 500) {
+                    message = "Server error. Please try again later.";
+                }
+
+                alert(message);
+                return;
+            }
+
+            console.log("Scan prediction:", data);
+            displayScanResult(data);
+        } catch (error) {
+            console.error("Scan request failed:", error);
+            alert("Could not connect to the backend.");
+        } finally {
+            analyzeButton.disabled = false;
+            analyzeButton.textContent = originalText;
+        }
+    });
+}
+
+
+function displayScanResult(data) {
+    let container = document.getElementById("scan-result");
+
+    if (!container) {
+        container = document.createElement("div");
+        container.id = "scan-result";
+        container.className = "scan-result";
+
+        const uploadArea = document.getElementById("upload-area");
+        (uploadArea ? uploadArea.parentNode : document.body).appendChild(container);
+    }
+
+    const prediction = escapeHTML(data.prediction || "Unknown");
+
+    const confidence =
+        typeof data.confidence === "number"
+            ? (data.confidence * 100).toFixed(1) + "%"
+            : "N/A";
+
+    const probabilities = data.probabilities || data.result || null;
+    let probabilitiesHTML = "";
+
+    if (probabilities && typeof probabilities === "object") {
+        probabilitiesHTML = Object.entries(probabilities)
+            .map(([label, value]) => {
+                const pct = (Number(value) * 100).toFixed(1);
+
+                const isTop =
+                    data.prediction &&
+                    String(data.prediction) === String(label);
+
+                return (
+                    '<div class="prob-item' + (isTop ? " prob-item-top" : "") + '">' +
+                    '<div class="prob-info">' +
+                    '<span class="prob-name">' +
+                    escapeHTML(String(label).replace(/_/g, " ")) +
+                    "</span>" +
+                    '<span class="prob-pct">' + pct + "%</span>" +
+                    "</div>" +
+                    '<div class="prob-bar">' +
+                    '<span class="prob-fill" style="width: ' + pct + '%;"></span>' +
+                    "</div>" +
+                    "</div>"
+                );
+            })
+            .join("");
+    }
+
+    container.innerHTML =
+        '<div class="result-card">' +
+        '<div class="result-header">' +
+        "<h3>Analysis Result</h3>" +
+        '<span class="result-badge">AI SCAN</span>' +
+        "</div>" +
+        '<div class="result-summary">' +
+        '<div class="result-prediction">' +
+        '<span class="result-label">Prediction</span>' +
+        '<span class="result-value">' + prediction + "</span>" +
+        "</div>" +
+        '<div class="result-confidence">' +
+        '<span class="result-label">Confidence</span>' +
+        '<span class="result-value">' + confidence + "</span>" +
+        "</div>" +
+        "</div>" +
+        '<div class="result-probabilities">' +
+        "<h4>Class Probabilities</h4>" +
+        probabilitiesHTML +
+        "</div>" +
+        '<button type="button" id="copyResultBtn" class="result-copy-btn">Copy Result</button>' +
+        "</div>";
+
+    const copyBtn = document.getElementById("copyResultBtn");
+
+    if (copyBtn) {
+        copyBtn.addEventListener("click", () => {
+            const text =
+                "Prediction: " + (data.prediction || "Unknown") +
+                " - Confidence: " + confidence;
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(() => {
+                    alert("Result copied to clipboard!");
+                });
+            }
+        });
+    }
+}

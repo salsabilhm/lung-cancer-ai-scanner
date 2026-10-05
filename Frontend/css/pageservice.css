@@ -1056,3 +1056,183 @@ table.appointments-table {
         justify-content: center;
     }
 }
+
+/* ==========================================
+   4b. SCAN RESULT — AI prediction card
+   (presentation only: same markup flow,
+    same colors as the rest of the site)
+   ================================---------- */
+
+/* let the result sit on its own full row under the upload area */
+.right-panel {
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.scan-result {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.result-card {
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #dbe6ff;
+    border-radius: 10px;
+    padding: 20px 22px;
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(0, 82, 204, 0.08);
+}
+
+.result-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #eef3ff;
+}
+
+.result-header h3 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 700;
+    color: #0052cc;
+}
+
+.result-badge {
+    background: #e1ebff;
+    color: #0052cc;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    white-space: nowrap;
+}
+
+.result-summary {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.result-prediction,
+.result-confidence {
+    flex: 1;
+    min-width: 0;
+    background: #f4f8ff;
+    border: 1px solid #e1ebff;
+    border-radius: 8px;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.result-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    color: #8a94a6;
+}
+
+.result-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0052cc;
+    overflow-wrap: anywhere;
+}
+
+.result-probabilities h4 {
+    margin: 0 0 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333333;
+}
+
+.prob-item {
+    margin-bottom: 12px;
+}
+
+.prob-item:last-child {
+    margin-bottom: 4px;
+}
+
+.prob-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 5px;
+    font-size: 13px;
+}
+
+.prob-name {
+    font-weight: 600;
+    color: #444444;
+    overflow-wrap: anywhere;
+}
+
+.prob-pct {
+    font-weight: 700;
+    color: #0052cc;
+    white-space: nowrap;
+}
+
+.prob-bar {
+    display: block;
+    width: 100%;
+    height: 8px;
+    background: #e1ebff;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.prob-fill {
+    display: block;
+    height: 100%;
+    background: #0052cc;
+    border-radius: 6px;
+    transition: width 0.6s ease;
+}
+
+/* the class the model actually predicted gets a slightly stronger bar */
+.prob-item-top .prob-name {
+    color: #0052cc;
+}
+
+.prob-item-top .prob-bar {
+    height: 10px;
+}
+
+.prob-item-top .prob-fill {
+    background: #003c99;
+}
+
+.result-copy-btn {
+    margin-top: 8px;
+    background: #ffffff;
+    color: #0052cc;
+    border: 1px solid #0052cc;
+    padding: 8px 18px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+.result-copy-btn:hover {
+    background: #0052cc;
+    color: #ffffff;
+}
+
+@media (max-width: 560px) {
+    .result-summary {
+        flex-direction: column;
+    }
+}

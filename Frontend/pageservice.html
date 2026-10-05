@@ -1,294 +1,1241 @@
+
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Réservation de Rendez-vous</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    >
+
     <link rel="stylesheet" href="css/pageservice.css">
 </head>
+
+
 <body>
-<!-- Navigation Bar -->
+
+
+<!-- =========================================================
+     NAVIGATION BAR
+========================================================= -->
+
 <nav class="navbar">
+
     <div class="logo">
-        <img src="images/LOGO.png" alt="Logo">
+        <img src="images/LOGO.png" alt="MediScan Logo">
     </div>
+
 
     <ul class="nav-links">
-        <li><a href="home.html">Home</a></li>
-        <li><a href="home.html#our-services">Services</a></li>
-        <li><a href="about%20us%20.html">About Us</a></li>
-        <li><a href="contact%20us.html">Contact</a></li>
+
+        <li>
+            <a href="home.html">Home</a>
+        </li>
+
+        <li>
+            <a href="home.html#our-services">Services</a>
+        </li>
+
+        <li>
+            <a href="about%20us%20.html">About Us</a>
+        </li>
+
+        <li>
+            <a href="contact%20us.html">Contact</a>
+        </li>
+
     </ul>
 
+
     <!-- Profile Menu -->
+
     <div class="profile-menu">
-        <button class="profile-btn" onclick="toggleDropdown()">
+
+        <button
+            class="profile-btn"
+            onclick="toggleDropdown()"
+            type="button"
+        >
+
             <div class="profile-img"></div>
+
             <span>My Profile</span>
+
             <i class="fas fa-caret-down"></i>
+
         </button>
 
-        <div class="dropdown-menu" id="dropdownMenu">
-            <a href="profilsetting.html"><i class="fas fa-user"></i> My Account</a>
-            <a href="profilsetting.html#settings"><i class="fas fa-cog"></i> Settings</a>
-            <a href="pageservice.html#myappointments"><i class="fas fa-calendar"></i> My Appointments</a>
-            <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+
+        <div
+            class="dropdown-menu"
+            id="dropdownMenu"
+        >
+
+            <a href="profilsetting.html">
+                <i class="fas fa-user"></i>
+                My Account
+            </a>
+
+
+            <a href="profilsetting.html#settings">
+                <i class="fas fa-cog"></i>
+                Settings
+            </a>
+
+
+            <a href="pageservice.html#myappointments">
+                <i class="fas fa-calendar"></i>
+                My Appointments
+            </a>
+
+
+            <a href="#" id="logoutLink">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </a>
+
         </div>
+
     </div>
+
 </nav>
 
-<!-- Header Section -->
+
+
+<!-- =========================================================
+     HEADER SECTION
+========================================================= -->
+
 <section class="headerimage">
+
     <div class="overlay">
-        <h1 id="animated-text">Welcome to Our Medical Platform</h1>
-        <p>Quality healthcare services at your fingertips</p>
+
+        <h1 id="animated-text">
+            Welcome to Our Medical Platform
+        </h1>
+
+        <p>
+            Quality healthcare services at your fingertips
+        </p>
+
     </div>
+
 </section>
 
-<!-- Scan Section -->
-<section>
-    <div class="containerscan" id="scanimage">
+
+
+<!-- =========================================================
+     MEDICAL IMAGE SCAN SECTION
+========================================================= -->
+
+<section id="scanimage">
+
+    <div class="containerscan">
+
+
         <div class="left-panel">
-            <h2>Medical Image Analysis with AI</h2>
-            <p>Get instant analysis of your medical images using our advanced artificial intelligence. We support <a href="#">X-rays</a>, <a href="#">MRIs</a>, <a href="#">CT scans</a>, and more.</p>
-            <button class="upload-btn">Upload Image</button>
-            <button class="upload-btn">result</button>
+
+            <h2>
+                Medical Image Analysis with AI
+            </h2>
+
+
+            <p>
+                Get instant analysis of your medical images
+                using our advanced artificial intelligence.
+                We support
+                <a href="#">X-rays</a>,
+                <a href="#">MRIs</a>,
+                <a href="#">CT scans</a>,
+                and more.
+            </p>
+
+
+            <button
+                class="upload-btn"
+                type="button"
+            >
+                Upload Image
+            </button>
+
+
+            <button
+                class="upload-btn"
+                type="button"
+            >
+                Result
+            </button>
+
         </div>
+
+
 
         <div class="right-panel">
-            <div class="upload-area" id="upload-area">
-                <img src="https://cdn-icons-png.flaticon.com/512/685/685655.png" alt="Upload Icon" width="100">
-                <p>Drag and drop your medical image here or click to browse files</p>
-                <input type="file" id="file-input" hidden>
+
+            <div
+                class="upload-area"
+                id="upload-area"
+            >
+
+                <img
+                    src="https://cdn-icons-png.flaticon.com/512/685/685655.png"
+                    alt="Upload Icon"
+                    width="100"
+                >
+
+
+                <p>
+                    Drag and drop your medical image here
+                    or click to browse files
+                </p>
+
+
+                <input
+                    type="file"
+                    id="file-input"
+                    accept="image/*"
+                    hidden
+                >
+
             </div>
+
         </div>
+
     </div>
+
 </section>
 
-<!-- Appointment Section -->
-<div class="containerbook"  id="appointments">
-    <h1>Book an Appointment</h1>
-    <p>Schedule your consultation with our specialists in just a few clicks.</p>
 
-    <form class="appointment-form">
-        <!-- Date Selection -->
+
+<!-- =========================================================
+     BOOK APPOINTMENT SECTION
+========================================================= -->
+
+<div
+    class="containerbook"
+    id="appointments"
+>
+
+
+    <h1>
+        Book an Appointment
+    </h1>
+
+
+    <p>
+        Schedule your consultation with our specialists
+        in just a few clicks.
+    </p>
+
+
+
+    <form
+        class="appointment-form"
+        id="appointment-form"
+    >
+
+
+        <!-- =================================================
+             DATE AND TIME
+        ================================================== -->
+
         <div class="form-section select-date">
-            <h2>Choose a Date</h2>
-            <label for="appointment-date">Select a date:</label>
-            <input type="date" id="appointment-date" required>
 
-            <h3>Available Time Slots</h3>
+            <h2>
+                Choose a Date
+            </h2>
+
+
+            <label for="appointment-date">
+                Select a date:
+            </label>
+
+
+            <input
+                type="date"
+                id="appointment-date"
+                required
+            >
+
+
+
+            <h3>
+                Available Time Slots
+            </h3>
+
+
             <div class="time-slots">
-                <button type="button" class="time-btn">09:00 - 10:00</button>
-                <button type="button" class="time-btn">10:00 - 11:00</button>
-                <button type="button" class="time-btn">11:00 - 12:00</button>
-                <button type="button" class="time-btn">13:00 - 14:00</button>
-                <button type="button" class="time-btn">14:00 - 15:00</button>
-                <button type="button" class="time-btn">15:00 - 16:00</button>
-                <button type="button" class="time-btn">16:00 - 17:00</button>
+
+                <button
+                    type="button"
+                    class="time-btn"
+                >
+                    09:00 - 10:00
+                </button>
+
+
+                <button
+                    type="button"
+                    class="time-btn"
+                >
+                    10:00 - 11:00
+                </button>
+
+
+                <button
+                    type="button"
+                    class="time-btn"
+                >
+                    11:00 - 12:00
+                </button>
+
+
+                <button
+                    type="button"
+                    class="time-btn"
+                >
+                    13:00 - 14:00
+                </button>
+
+
+                <button
+                    type="button"
+                    class="time-btn"
+                >
+                    14:00 - 15:00
+                </button>
+
+
+                <button
+                    type="button"
+                    class="time-btn"
+                >
+                    15:00 - 16:00
+                </button>
+
+
+                <button
+                    type="button"
+                    class="time-btn"
+                >
+                    16:00 - 17:00
+                </button>
+
             </div>
+
         </div>
 
-        <!-- Personal Information -->
+
+
+        <!-- =================================================
+             PERSONAL INFORMATION
+        ================================================== -->
+
         <div class="form-section personal-info">
-            <h2>Personal Information</h2>
-            <label>Full Name</label>
-            <input type="text" placeholder="John Doe" required>
 
-            <label>Email Address</label>
-            <input type="email" placeholder="john.doe@example.com" required>
 
-            <label>Phone Number</label>
-            <input type="tel" placeholder="+1 234 567 890" required>
+            <h2>
+                Personal Information
+            </h2>
 
-            <label>Department</label>
-            <select required>
-                <option value="">Select a specialist</option>
-                <option>Pulmonologist</option>
-                <option>Medical Oncologist</option>
-                <option>Radiation Oncologist</option>
-                <option>Thoracic Surgeon</option>
+
+            <!-- These fields are displayed for the user.
+                 They are NOT sent as appointment fields.
+                 The backend gets the authenticated user
+                 from the JWT token. -->
+
+            <label for="booking-full-name">
+                Full Name
+            </label>
+
+            <input
+                type="text"
+                id="booking-full-name"
+                placeholder="John Doe"
+                autocomplete="name"
+                required
+            >
+
+
+
+            <label for="booking-email">
+                Email Address
+            </label>
+
+            <input
+                type="email"
+                id="booking-email"
+                placeholder="john.doe@example.com"
+                autocomplete="email"
+                required
+            >
+
+
+
+            <label for="booking-phone">
+                Phone Number
+            </label>
+
+            <input
+                type="tel"
+                id="booking-phone"
+                placeholder="+1 234 567 890"
+                autocomplete="tel"
+                required
+            >
+
+
+
+            <!-- =================================================
+                 DOCTOR SELECTION
+            ================================================== -->
+
+            <label for="doctor-select">
+                Department
+            </label>
+
+
+            <select
+                id="doctor-select"
+                name="doctor"
+                required
+            >
+
+                <option
+                    value=""
+                    selected
+                    disabled
+                >
+                    Select a specialist
+                </option>
+
+
+                <!--
+                    IMPORTANT:
+
+                    The values below MUST be the real
+                    Doctor IDs from the database.
+
+                    Example:
+                    Dr. Ahmed Kaci -> ID 1
+
+                    If your Supabase IDs are different,
+                    replace only the value.
+                -->
+
+
+                <option value="1">
+                    Pulmonologist
+                </option>
+
+
+                <option value="2">
+                    Medical Oncologist
+                </option>
+
+
+                <option value="3">
+                    Radiation Oncologist
+                </option>
+
+
+                <option value="4">
+                    Thoracic Surgeon
+                </option>
+
             </select>
 
-            <button type="submit" class="book-btn">Confirm Appointment</button>
+
+
+            <!-- =================================================
+                 BOOK BUTTON
+            ================================================== -->
+
+            <button
+                type="submit"
+                class="book-btn"
+            >
+                Confirm Appointment
+            </button>
+
+
         </div>
+
     </form>
+
 </div>
 
-<!-- My Appointments Section -->
-<section class="my-appointments" id="myappointments">
+
+
+<!-- =========================================================
+     MY APPOINTMENTS SECTION
+========================================================= -->
+
+<section
+    class="my-appointments"
+    id="myappointments"
+>
+
+
     <div class="appointments-toolbar">
-        <h1>My Appointments</h1>
-        <div class="filter-tabs" id="filterTabs">
-            <button class="filter-tab active" data-filter="all">All</button>
-            <button class="filter-tab" data-filter="accepted">Accepted</button>
-            <button class="filter-tab" data-filter="pending">Pending</button>
-            <button class="filter-tab" data-filter="rejected">Rejected</button>
+
+
+        <h1>
+            My Appointments
+        </h1>
+
+
+
+        <!-- Filters -->
+
+        <div
+            class="filter-tabs"
+            id="filterTabs"
+        >
+
+            <button
+                class="filter-tab active"
+                data-filter="all"
+                type="button"
+            >
+                All
+            </button>
+
+
+            <button
+                class="filter-tab"
+                data-filter="accepted"
+                type="button"
+            >
+                Accepted
+            </button>
+
+
+            <button
+                class="filter-tab"
+                data-filter="pending"
+                type="button"
+            >
+                Pending
+            </button>
+
+
+            <button
+                class="filter-tab"
+                data-filter="rejected"
+                type="button"
+            >
+                Rejected
+            </button>
+
+
+            <button
+                class="filter-tab"
+                data-filter="cancelled"
+                type="button"
+            >
+                Cancelled
+            </button>
+
         </div>
+
     </div>
+
+
+
+    <!-- =====================================================
+         APPOINTMENTS TABLE
+    ====================================================== -->
 
     <div class="appointments-table-wrapper">
+
         <table class="appointments-table">
+
+
             <thead>
-            <tr>
-                <th>Patient</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Doctor</th>
-                <th>Department</th>
-                <th>Status</th>
-                <th>Actions</th>
-            </tr>
+
+                <tr>
+
+                    <th>
+                        Patient
+                    </th>
+
+
+                    <th>
+                        Date
+                    </th>
+
+
+                    <th>
+                        Time
+                    </th>
+
+
+                    <th>
+                        Doctor
+                    </th>
+
+
+                    <th>
+                        Department
+                    </th>
+
+
+                    <th>
+                        Status
+                    </th>
+
+
+                    <th>
+                        Admin Response
+                    </th>
+
+                </tr>
+
             </thead>
+
+
+
             <tbody id="appointmentsBody">
-            <!-- Rows injected by JS -->
+
+                <!--
+                    Appointment rows are loaded dynamically
+                    from Django REST API by pageseerve.js.
+                -->
+
             </tbody>
+
+
         </table>
+
     </div>
+
 </section>
 
-<!-- Suggested Doctors Section (Premium) -->
-<section class="suggested-doctors" id="suggested-doctors">
+
+
+<!-- =========================================================
+     SUGGESTED DOCTORS — PREMIUM
+========================================================= -->
+
+<section
+    class="suggested-doctors"
+    id="suggested-doctors"
+>
+
+
     <div class="suggested-header">
+
+
         <div class="suggested-header-text">
-            <h1>Suggested Doctors <span class="premium-badge">Premium</span></h1>
-            <p>Get personalized doctor recommendations based on your medical history, symptoms and previous consultations.</p>
+
+            <h1>
+
+                Suggested Doctors
+
+                <span class="premium-badge">
+                    Premium
+                </span>
+
+            </h1>
+
+
+            <p>
+                Get personalized doctor recommendations
+                based on your medical history, symptoms
+                and previous consultations.
+            </p>
+
         </div>
+
     </div>
 
-    <div class="doctors-panel locked" id="doctorsPanel">
+
+
+    <div
+        class="doctors-panel locked"
+        id="doctorsPanel"
+    >
+
+
         <div class="doctors-grid">
+
+
+            <!-- Doctor 1 -->
+
             <div class="doctor-card">
-                <div class="doctor-avatar">AK</div>
-                <h3>Dr. Ahmed Kaci</h3>
-                <p class="specialty">Pulmonologist</p>
-                <span class="match">96% match</span>
-                <button class="book-doctor-btn">Book Consultation</button>
+
+                <div class="doctor-avatar">
+                    AK
+                </div>
+
+
+                <h3>
+                    Dr. Ahmed Kaci
+                </h3>
+
+
+                <p class="specialty">
+                    Pulmonologist
+                </p>
+
+
+                <span class="match">
+                    96% match
+                </span>
+
+
+                <button
+                    class="book-doctor-btn"
+                    type="button"
+                >
+                    Book Consultation
+                </button>
+
             </div>
+
+
+
+            <!-- Doctor 2 -->
+
             <div class="doctor-card">
-                <div class="doctor-avatar">SB</div>
-                <h3>Dr. Sarah Benali</h3>
-                <p class="specialty">Medical Oncologist</p>
-                <span class="match">92% match</span>
-                <button class="book-doctor-btn">Book Consultation</button>
+
+                <div class="doctor-avatar">
+                    SB
+                </div>
+
+
+                <h3>
+                    Dr. Sarah Benali
+                </h3>
+
+
+                <p class="specialty">
+                    Medical Oncologist
+                </p>
+
+
+                <span class="match">
+                    92% match
+                </span>
+
+
+                <button
+                    class="book-doctor-btn"
+                    type="button"
+                >
+                    Book Consultation
+                </button>
+
             </div>
+
+
+
+            <!-- Doctor 3 -->
+
             <div class="doctor-card">
-                <div class="doctor-avatar">NM</div>
-                <h3>Dr. Nabil Meziane</h3>
-                <p class="specialty">Thoracic Surgeon</p>
-                <span class="match">89% match</span>
-                <button class="book-doctor-btn">Book Consultation</button>
+
+                <div class="doctor-avatar">
+                    NM
+                </div>
+
+
+                <h3>
+                    Dr. Nabil Meziane
+                </h3>
+
+
+                <p class="specialty">
+                    Thoracic Surgeon
+                </p>
+
+
+                <span class="match">
+                    89% match
+                </span>
+
+
+                <button
+                    class="book-doctor-btn"
+                    type="button"
+                >
+                    Book Consultation
+                </button>
+
             </div>
+
+
+
+            <!-- Doctor 4 -->
+
             <div class="doctor-card">
-                <div class="doctor-avatar">LH</div>
-                <h3>Dr. Lina Haddad</h3>
-                <p class="specialty">Radiation Oncologist</p>
-                <span class="match">87% match</span>
-                <button class="book-doctor-btn">Book Consultation</button>
+
+                <div class="doctor-avatar">
+                    LH
+                </div>
+
+
+                <h3>
+                    Dr. Lina Haddad
+                </h3>
+
+
+                <p class="specialty">
+                    Radiation Oncologist
+                </p>
+
+
+                <span class="match">
+                    87% match
+                </span>
+
+
+                <button
+                    class="book-doctor-btn"
+                    type="button"
+                >
+                    Book Consultation
+                </button>
+
             </div>
+
+
+
+            <!-- Doctor 5 -->
+
             <div class="doctor-card">
-                <div class="doctor-avatar">YT</div>
-                <h3>Dr. Yacine Toumi</h3>
-                <p class="specialty">Pulmonologist</p>
-                <span class="match">84% match</span>
-                <button class="book-doctor-btn">Book Consultation</button>
+
+                <div class="doctor-avatar">
+                    YT
+                </div>
+
+
+                <h3>
+                    Dr. Yacine Toumi
+                </h3>
+
+
+                <p class="specialty">
+                    Pulmonologist
+                </p>
+
+
+                <span class="match">
+                    84% match
+                </span>
+
+
+                <button
+                    class="book-doctor-btn"
+                    type="button"
+                >
+                    Book Consultation
+                </button>
+
             </div>
+
+
+
+            <!-- Doctor 6 -->
+
             <div class="doctor-card">
-                <div class="doctor-avatar">RB</div>
-                <h3>Dr. Rym Belkacem</h3>
-                <p class="specialty">Medical Oncologist</p>
-                <span class="match">81% match</span>
-                <button class="book-doctor-btn">Book Consultation</button>
+
+                <div class="doctor-avatar">
+                    RB
+                </div>
+
+
+                <h3>
+                    Dr. Rym Belkacem
+                </h3>
+
+
+                <p class="specialty">
+                    Medical Oncologist
+                </p>
+
+
+                <span class="match">
+                    81% match
+                </span>
+
+
+                <button
+                    class="book-doctor-btn"
+                    type="button"
+                >
+                    Book Consultation
+                </button>
+
             </div>
+
         </div>
 
-        <div class="upgrade-overlay" id="upgradeOverlay">
+
+
+        <!-- Premium Overlay -->
+
+        <div
+            class="upgrade-overlay"
+            id="upgradeOverlay"
+        >
+
             <i class="fas fa-lock"></i>
-            <h3>Unlock Doctor Suggestions</h3>
-            <p>Upgrade to Premium to see doctors matched to your profile with AI-powered recommendations.</p>
-            <button class="upgrade-btn" id="openUpgradeModal">Upgrade Now</button>
+
+
+            <h3>
+                Unlock Doctor Suggestions
+            </h3>
+
+
+            <p>
+                Upgrade to Premium to see doctors
+                matched to your profile with
+                AI-powered recommendations.
+            </p>
+
+
+            <button
+                class="upgrade-btn"
+                id="openUpgradeModal"
+                type="button"
+            >
+                Upgrade Now
+            </button>
+
         </div>
+
     </div>
+
 </section>
 
-<!-- Upgrade Modal -->
-<div class="modal-overlay" id="upgradeModalOverlay">
+
+
+<!-- =========================================================
+     UPGRADE MODAL
+========================================================= -->
+
+<div
+    class="modal-overlay"
+    id="upgradeModalOverlay"
+>
+
+
     <div class="upgrade-modal">
-        <button class="modal-close" id="closeUpgradeModal">&times;</button>
-        <h2>Upgrade to Premium</h2>
-        <p>Choose a plan to unlock personalized doctor suggestions and more premium features.</p>
 
-        <div class="plans" id="plans">
-            <div class="plan-card" data-plan="monthly">
-                <div class="plan-name">Monthly</div>
-                <div class="plan-price">$9.99</div>
-                <div class="plan-period">per month</div>
+
+        <button
+            class="modal-close"
+            id="closeUpgradeModal"
+            type="button"
+        >
+            &times;
+        </button>
+
+
+        <h2>
+            Upgrade to Premium
+        </h2>
+
+
+        <p>
+            Choose a plan to unlock personalized
+            doctor suggestions and more premium features.
+        </p>
+
+
+
+        <div
+            class="plans"
+            id="plans"
+        >
+
+
+            <div
+                class="plan-card"
+                data-plan="monthly"
+            >
+
+                <div class="plan-name">
+                    Monthly
+                </div>
+
+
+                <div class="plan-price">
+                    $9.99
+                </div>
+
+
+                <div class="plan-period">
+                    per month
+                </div>
+
             </div>
-            <div class="plan-card selected" data-plan="yearly">
-                <div class="plan-name">Yearly</div>
-                <div class="plan-price">$79.99</div>
-                <div class="plan-period">per year</div>
+
+
+
+            <div
+                class="plan-card selected"
+                data-plan="yearly"
+            >
+
+                <div class="plan-name">
+                    Yearly
+                </div>
+
+
+                <div class="plan-price">
+                    $79.99
+                </div>
+
+
+                <div class="plan-period">
+                    per year
+                </div>
+
             </div>
+
         </div>
 
-        <button class="confirm-upgrade-btn" id="confirmUpgradeBtn">Confirm Upgrade</button>
-        <div class="upgrade-success-note" id="upgradeSuccessNote">
-            <i class="fas fa-check-circle"></i> Your account has been upgraded to Premium!
+
+
+        <button
+            class="confirm-upgrade-btn"
+            id="confirmUpgradeBtn"
+            type="button"
+        >
+            Confirm Upgrade
+        </button>
+
+
+
+        <div
+            class="upgrade-success-note"
+            id="upgradeSuccessNote"
+        >
+
+            <i class="fas fa-check-circle"></i>
+
+            Your account has been upgraded
+            to Premium!
+
         </div>
+
     </div>
+
 </div>
 
-<!-- Footer -->
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
 <footer class="footer">
+
+
     <div class="container">
+
+
         <div class="footer-section">
-            <h2><i class="fas fa-heart"></i> MediScan</h2>
-            <p>Providing quality healthcare services to our community with compassion and excellence.</p>
+
+            <h2>
+
+                <i class="fas fa-heart"></i>
+
+                MediScan
+
+            </h2>
+
+
+            <p>
+                Providing quality healthcare services
+                to our community with compassion
+                and excellence.
+            </p>
+
+
             <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
+
+                <a href="#">
+                    <i class="fab fa-facebook"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fab fa-twitter"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fab fa-instagram"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+
             </div>
+
         </div>
 
-        <div class="footer-section">
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Our Services</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </div>
+
 
         <div class="footer-section">
-            <h3>Our Services</h3>
+
+            <h3>
+                Quick Links
+            </h3>
+
+
             <ul>
-                <li><a href="#">Book Appointment</a></li>
-                <li><a href="#">Profile Settings</a></li>
-                <li><a href="#">Check Appointment</a></li>
-                <li><a href="#">Image Analysis</a></li>
-                <li><a href="#">Doctor Suggestions</a></li>
+
+                <li>
+                    <a href="home.html">
+                        Home
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="about%20us%20.html">
+                        About Us
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="home.html#our-services">
+                        Our Services
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="contact%20us.html">
+                        Contact
+                    </a>
+                </li>
+
             </ul>
+
         </div>
+
+
+
+        <div class="footer-section">
+
+            <h3>
+                Our Services
+            </h3>
+
+
+            <ul>
+
+                <li>
+                    <a href="#appointments">
+                        Book Appointment
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="profilsetting.html">
+                        Profile Settings
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#myappointments">
+                        Check Appointment
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#scanimage">
+                        Image Analysis
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#suggested-doctors">
+                        Doctor Suggestions
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
 
         <div class="footer-section contact">
-            <h3>Contact Us</h3>
-            <p><i class="fas fa-map-marker-alt"></i> 123 Medical Center, New City, Constantine 25000</p>
-            <p><i class="fas fa-phone"></i> 0795 77 60 90</p>
-            <p><i class="fas fa-envelope"></i> info@mediscan.dz</p>
-            <p><i class="fas fa-clock"></i> Mon-Fri: 8AM-5PM</p>
+
+            <h3>
+                Contact Us
+            </h3>
+
+
+            <p>
+                <i class="fas fa-map-marker-alt"></i>
+
+                123 Medical Center,
+                New City,
+                Constantine 25000
+            </p>
+
+
+            <p>
+                <i class="fas fa-phone"></i>
+
+                0795 77 60 90
+            </p>
+
+
+            <p>
+                <i class="fas fa-envelope"></i>
+
+                info@mediscan.dz
+            </p>
+
+
+            <p>
+                <i class="fas fa-clock"></i>
+
+                Mon-Fri: 8AM-5PM
+            </p>
+
         </div>
+
     </div>
 
+
+
     <div class="footer-bottom">
-        <p>© 2025 MediScan Health Center. All rights reserved.</p>
+
+        <p>
+            © 2025 MediScan Health Center.
+            All rights reserved.
+        </p>
+
     </div>
+
 </footer>
 
 
-<script src="js/pageseervice.js"></script>
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script src="js/pageseerve.js"></script>
+
 </body>
+
 </html>

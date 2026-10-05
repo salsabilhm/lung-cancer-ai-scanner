@@ -49,28 +49,28 @@
                 <div class="profile-form">
                     <h2>Profile</h2>
                     <p class="subtext">Edit Profile</p>
-                    <form>
+                    <form id="profileForm">
                         <label>Full Name</label>
-                        <input type="text" value="John Doe">
+                        <input type="text" id="profileFullName">
 
                         <label>Email</label>
-                        <input type="email" value="john.doe@example.com">
+                        <input type="email" id="profileEmail">
 
                         <label>Phone</label>
-                        <input type="text" value="+212 612 345 678">
+                        <input type="text" id="profilePhone">
 
                         <label>Date of Birth</label>
-                        <input type="date" value="1990-01-01">
+                        <input type="date" id="profileDob">
 
                         <label>Gender</label>
-                        <select>
+                        <select id="profileGender">
                             <option>Male</option>
                             <option>Female</option>
                             <option>Other</option>
                         </select>
 
                         <label>About Me</label>
-                        <textarea>I am a patient seeking high-quality medical care and a personalized treatment plan to improve my health</textarea>
+                        <textarea id="profileAbout"></textarea>
 
                         <button type="submit">Save Changes</button>
                     </form>
