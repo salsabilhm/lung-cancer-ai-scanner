@@ -90,4 +90,5 @@ The model is managed using **Git LFS** because of its large file size.
 * GitHub
 * Git LFS
 
-
+### Authors 
+Hamdane Salsabil & Benaissa Roumeissa
